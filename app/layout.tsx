@@ -1,0 +1,74 @@
+import type { Metadata } from 'next';
+import './globals.css';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import { COMPANY_INFO } from '@/lib/content';
+import { generateOrganizationJsonLd } from '@/lib/seo';
+import { MessageSquare, Phone } from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: `${COMPANY_INFO.name} | ${COMPANY_INFO.tagline}`,
+  description: `${COMPANY_INFO.subtagline}. Premium Mercedes-Benz fleet, professional licensed chauffeurs, airport meet & greet, and day trips to Hallstatt, Wachau, Salzburg, Budapest, Prague, and Bratislava.`,
+  metadataBase: new URL('https://viennadaytrip.com'),
+  icons: {
+    icon: '/images/branding/cropped-logo-BmhMpHJz-32x32.png',
+    apple: '/images/branding/cropped-logo-BmhMpHJz-180x180.png',
+  },
+  openGraph: {
+    title: `${COMPANY_INFO.name} | ${COMPANY_INFO.tagline}`,
+    description: COMPANY_INFO.subtagline,
+    url: 'https://viennadaytrip.com',
+    siteName: COMPANY_INFO.name,
+    images: [
+      {
+        url: 'https://viennadaytrip.com/images/destinations/Hallstatt-Day-Trip-From-Vienna.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Vienna Day Trip Private Chauffeur',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const jsonLd = generateOrganizationJsonLd();
+
+  return (
+    <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="bg-luxury-black text-gray-100 min-h-screen flex flex-col antialiased selection:bg-gold selection:text-black">
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+
+        {/* Floating Quick Action Buttons */}
+        <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+          <a
+            href={COMPANY_INFO.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-13 h-13 p-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 border border-emerald-400/40 group"
+            title="Chat on WhatsApp"
+            aria-label="Chat on WhatsApp"
+          >
+            <MessageSquare className="w-6 h-6" />
+            <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 ease-in-out text-xs font-semibold pl-0 group-hover:pl-2">
+              WhatsApp
+            </span>
+          </a>
+        </div>
+      </body>
+    </html>
+  );
+}
