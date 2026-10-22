@@ -11,16 +11,16 @@ export const metadata = constructMetadata({
 
 export default function BookingPage() {
   return (
-    <div className="pt-28 pb-20 bg-luxury-black text-gray-200 min-h-screen">
+    <div className="pt-28 pb-20 bg-[#faf9f6] text-gray-800 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs uppercase tracking-widest text-gold font-semibold">
+          <span className="text-xs uppercase tracking-widest text-gold-700 font-bold">
             Online Reservation Engine
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-wide">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold text-gray-900 tracking-wide">
             Book Your Chauffeur
           </h1>
-          <p className="text-gray-300 text-sm max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-gray-600 text-sm max-w-xl mx-auto font-normal leading-relaxed">
             Select your service type, date, time, and vehicle below. Transparent fixed quotes with zero hidden charges.
           </p>
         </div>

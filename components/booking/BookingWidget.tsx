@@ -15,7 +15,7 @@ import {
   Send, 
   MessageSquare, 
   Sparkles,
-  AlertCircle
+  ShieldCheck
 } from 'lucide-react';
 import { COMPANY_INFO, FLEET_VEHICLES, DAY_TRIP_ROUTES_LIST } from '@/lib/content';
 import ServiceAreaModal from './ServiceAreaModal';
@@ -74,7 +74,6 @@ export default function BookingWidget() {
       alert('Please provide a drop-off destination.');
       return;
     }
-    // Location check
     checkLocationAllowed(pickupLocation);
     if (dropoffLocation) checkLocationAllowed(dropoffLocation);
 
@@ -126,7 +125,7 @@ export default function BookingWidget() {
   const currentVehicleObj = FLEET_VEHICLES.find(v => v.id === selectedVehicle);
 
   return (
-    <div id="booking-section" className="w-full max-w-5xl mx-auto rounded-2xl bg-luxury-black/95 border border-gold/40 shadow-2xl overflow-hidden backdrop-blur-xl">
+    <div id="booking-section" className="w-full max-w-5xl mx-auto">
       {/* Service Area Warning Modal */}
       <ServiceAreaModal
         isOpen={serviceAreaWarning}
@@ -134,92 +133,92 @@ export default function BookingWidget() {
         locationEntered={warningLocation}
       />
 
-      {/* Tabs Header */}
-      <div className="flex border-b border-gold/20 bg-luxury-dark/90">
+      {/* Pill Tabs Header - Floating pills matching screenshot */}
+      <div className="flex items-center justify-center sm:justify-start gap-2.5 mb-2.5 px-2">
         <button
           type="button"
           onClick={() => { setActiveTab('transfer'); setStep(1); }}
-          className={`flex-1 py-4 px-3 sm:px-6 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 ${
+          className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider transition-all shadow-sm ${
             activeTab === 'transfer'
-              ? 'bg-gold text-luxury-black font-bold shadow-inner'
-              : 'text-gray-300 hover:text-gold hover:bg-white/5'
+              ? 'bg-[#1a1612] text-white shadow-md ring-2 ring-[#c8a96b]/40'
+              : 'bg-white/95 text-gray-700 hover:bg-white hover:text-black border border-gray-200/90'
           }`}
         >
-          <Car className="w-4 h-4" />
-          <span>Transfer</span>
+          Transfer
         </button>
 
         <button
           type="button"
           onClick={() => { setActiveTab('hourly'); setStep(1); }}
-          className={`flex-1 py-4 px-3 sm:px-6 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 ${
+          className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider transition-all shadow-sm ${
             activeTab === 'hourly'
-              ? 'bg-gold text-luxury-black font-bold shadow-inner'
-              : 'text-gray-300 hover:text-gold hover:bg-white/5'
+              ? 'bg-[#1a1612] text-white shadow-md ring-2 ring-[#c8a96b]/40'
+              : 'bg-white/95 text-gray-700 hover:bg-white hover:text-black border border-gray-200/90'
           }`}
         >
-          <Clock className="w-4 h-4" />
-          <span>Hourly Chauffeur</span>
+          Hourly
         </button>
 
         <button
           type="button"
           onClick={() => { setActiveTab('daytrip'); setStep(1); }}
-          className={`flex-1 py-4 px-3 sm:px-6 text-xs sm:text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 ${
+          className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wider transition-all shadow-sm ${
             activeTab === 'daytrip'
-              ? 'bg-gold text-luxury-black font-bold shadow-inner'
-              : 'text-gray-300 hover:text-gold hover:bg-white/5'
+              ? 'bg-[#1a1612] text-white shadow-md ring-2 ring-[#c8a96b]/40'
+              : 'bg-white/95 text-gray-700 hover:bg-white hover:text-black border border-gray-200/90'
           }`}
         >
-          <Sparkles className="w-4 h-4" />
-          <span>Day Trip</span>
+          Day Trip
         </button>
       </div>
 
+      {/* White Card Container */}
+      <div className="rounded-2xl bg-white border border-gray-200/90 shadow-2xl shadow-black/10 overflow-hidden">
+
       {/* Booking Steps Progress Indicator */}
-      <div className="px-6 pt-4 pb-2 border-b border-white/5 flex items-center justify-between text-xs text-gray-400">
+      <div className="px-6 pt-4 pb-3 border-b border-gray-100 flex items-center justify-between text-xs bg-white">
         <div className="flex items-center gap-2">
-          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${step >= 1 ? 'bg-gold text-luxury-dark' : 'bg-gray-700 text-white'}`}>1</span>
-          <span className={step === 1 ? 'text-gold font-medium' : 'text-gray-400'}>Route & Time</span>
+          <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? 'bg-gold-500 text-luxury-dark shadow-sm' : 'bg-gray-100 text-gray-500'}`}>1</span>
+          <span className={step === 1 ? 'text-gray-900 font-bold' : 'text-gray-500'}>Route & Time</span>
         </div>
-        <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
+        <ChevronRight className="w-4 h-4 text-gray-300" />
         <div className="flex items-center gap-2">
-          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${step >= 2 ? 'bg-gold text-luxury-dark' : 'bg-gray-700 text-white'}`}>2</span>
-          <span className={step === 2 ? 'text-gold font-medium' : 'text-gray-400'}>Select Vehicle</span>
+          <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step >= 2 ? 'bg-gold-500 text-luxury-dark shadow-sm' : 'bg-gray-100 text-gray-500'}`}>2</span>
+          <span className={step === 2 ? 'text-gray-900 font-bold' : 'text-gray-500'}>Select Vehicle</span>
         </div>
-        <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
+        <ChevronRight className="w-4 h-4 text-gray-300" />
         <div className="flex items-center gap-2">
-          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${step >= 3 ? 'bg-gold text-luxury-dark' : 'bg-gray-700 text-white'}`}>3</span>
-          <span className={step === 3 ? 'text-gold font-medium' : 'text-gray-400'}>Quote & Details</span>
+          <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step >= 3 ? 'bg-gold-500 text-luxury-dark shadow-sm' : 'bg-gray-100 text-gray-500'}`}>3</span>
+          <span className={step === 3 ? 'text-gray-900 font-bold' : 'text-gray-500'}>Quote & Details</span>
         </div>
       </div>
 
       {/* Main Content Body */}
-      <div className="p-6 sm:p-8">
+      <div className="p-6 sm:p-8 bg-white">
         {isSubmitted ? (
           /* Confirmation State */
           <div className="text-center py-8 space-y-4 animate-fade-in">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
               <Check className="w-8 h-8" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-white">
+            <h3 className="font-serif text-2xl font-bold text-gray-900">
               Thank You! Your Request Has Been Received
             </h3>
-            <p className="text-gray-300 text-sm max-w-md mx-auto leading-relaxed">
+            <p className="text-gray-600 text-sm max-w-md mx-auto leading-relaxed">
               Our dispatch team is reviewing your route ({activeTab.toUpperCase()}) and will reply with your confirmed fixed quote and chauffeur details within 15 minutes.
             </p>
-            <div className="p-4 bg-white/5 border border-gold/30 rounded-xl max-w-md mx-auto text-left text-xs space-y-1.5 text-gray-300">
-              <p><strong className="text-gold">Passenger:</strong> {fullName}</p>
-              <p><strong className="text-gold">Pickup:</strong> {pickupLocation} on {pickupDate} at {pickupTime}</p>
-              <p><strong className="text-gold">Vehicle:</strong> {currentVehicleObj?.name}</p>
-              <p><strong className="text-gold">Contact:</strong> {email} | {phone}</p>
+            <div className="p-5 bg-[#faf9f6] border border-gray-200 rounded-xl max-w-md mx-auto text-left text-xs space-y-2 text-gray-700 shadow-sm">
+              <p><strong className="text-gray-900">Passenger:</strong> {fullName}</p>
+              <p><strong className="text-gray-900">Pickup:</strong> {pickupLocation} on {pickupDate} at {pickupTime}</p>
+              <p><strong className="text-gray-900">Vehicle:</strong> {currentVehicleObj?.name}</p>
+              <p><strong className="text-gray-900">Contact:</strong> {email} | {phone}</p>
             </div>
             <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href={`https://wa.me/436642035445?text=${generateWhatsAppMessage()}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-6 py-3 rounded-lg transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-3 rounded-lg shadow-md transition-colors"
               >
                 <MessageSquare className="w-4 h-4" />
                 <span>Confirm Instantly via WhatsApp</span>
@@ -227,7 +226,7 @@ export default function BookingWidget() {
               <button
                 type="button"
                 onClick={() => { setIsSubmitted(false); setStep(1); }}
-                className="text-xs text-gray-400 hover:text-white px-4 py-3 underline"
+                className="text-xs text-gray-500 hover:text-gray-900 px-4 py-3 underline"
               >
                 Book Another Trip
               </button>
@@ -239,8 +238,8 @@ export default function BookingWidget() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Pickup Date */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-gold uppercase tracking-wider flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5" />
+                <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-gold-600" />
                   <span>Pickup Date</span>
                 </label>
                 <input
@@ -249,14 +248,14 @@ export default function BookingWidget() {
                   value={pickupDate}
                   min={new Date().toISOString().split('T')[0]}
                   onChange={(e) => setPickupDate(e.target.value)}
-                  className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500 transition-colors"
                 />
               </div>
 
               {/* Pickup Time */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-gold uppercase tracking-wider flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5" />
+                <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <Clock className="w-3.5 h-3.5 text-gold-600" />
                   <span>Pickup Time</span>
                 </label>
                 <input
@@ -265,15 +264,15 @@ export default function BookingWidget() {
                   value={pickupTime}
                   step="900"
                   onChange={(e) => setPickupTime(e.target.value)}
-                  className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500 transition-colors"
                 />
               </div>
 
               {/* Pickup Location */}
               <div className="md:col-span-2 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5" />
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-gold-600" />
                     <span>Pickup Location</span>
                   </label>
                   <button
@@ -286,7 +285,7 @@ export default function BookingWidget() {
                         );
                       }
                     }}
-                    className="text-[10px] text-gray-400 hover:text-gold transition-colors"
+                    className="text-[11px] text-gold-700 hover:text-gold-900 font-medium"
                   >
                     Use my location
                   </button>
@@ -297,17 +296,17 @@ export default function BookingWidget() {
                   placeholder="e.g. Vienna Airport (VIE) or Hotel Sacher Vienna"
                   value={pickupLocation}
                   onChange={(e) => setPickupLocation(e.target.value)}
-                  className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:border-gold-500 transition-colors"
                 />
               </div>
             </div>
 
             {/* Dynamic Fields for Tab 1: Transfer */}
             {activeTab === 'transfer' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 border-t border-white/10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 border-t border-gray-100">
                 <div className="md:col-span-2 space-y-1.5">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5" />
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-gold-600" />
                     <span>Drop-off Destination</span>
                   </label>
                   <input
@@ -316,18 +315,18 @@ export default function BookingWidget() {
                     placeholder="e.g. Stephansplatz, Vienna or Hotel Address"
                     value={dropoffLocation}
                     onChange={(e) => setDropoffLocation(e.target.value)}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-gold transition-colors"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:border-gold-500 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider">
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider">
                     Transfer Type
                   </label>
                   <select
                     value={transferType}
                     onChange={(e) => setTransferType(e.target.value as 'one-way' | 'return')}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition-colors"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                   >
                     <option value="one-way">One Way</option>
                     <option value="return">Return Trip</option>
@@ -335,13 +334,13 @@ export default function BookingWidget() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider">
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider">
                     Extra Waiting Time
                   </label>
                   <select
                     value={extraTime}
                     onChange={(e) => setExtraTime(e.target.value)}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold transition-colors"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                   >
                     <option value="0">0 minutes</option>
                     <option value="30">30 minutes</option>
@@ -355,7 +354,7 @@ export default function BookingWidget() {
                 {transferType === 'return' && (
                   <>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-gold uppercase tracking-wider">
+                      <label className="text-xs font-bold text-gray-800 uppercase tracking-wider">
                         Return Date
                       </label>
                       <input
@@ -364,11 +363,11 @@ export default function BookingWidget() {
                         value={returnDate}
                         min={pickupDate || new Date().toISOString().split('T')[0]}
                         onChange={(e) => setReturnDate(e.target.value)}
-                        className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                        className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-gold uppercase tracking-wider">
+                      <label className="text-xs font-bold text-gray-800 uppercase tracking-wider">
                         Return Time
                       </label>
                       <input
@@ -376,7 +375,7 @@ export default function BookingWidget() {
                         required
                         value={returnTime}
                         onChange={(e) => setReturnTime(e.target.value)}
-                        className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                        className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                       />
                     </div>
                   </>
@@ -386,15 +385,15 @@ export default function BookingWidget() {
 
             {/* Dynamic Fields for Tab 2: Hourly */}
             {activeTab === 'hourly' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2 border-t border-white/10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2 border-t border-gray-100">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider">
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider">
                     Duration (Hours on Standby)
                   </label>
                   <select
                     value={durationHours}
                     onChange={(e) => setDurationHours(e.target.value)}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                   >
                     <option value="2">2 Hours (Minimum)</option>
                     <option value="3">3 Hours</option>
@@ -407,7 +406,7 @@ export default function BookingWidget() {
                 </div>
 
                 <div className="md:col-span-2 space-y-1.5">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider">
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider">
                     Optional Final Drop-off Location
                   </label>
                   <input
@@ -415,7 +414,7 @@ export default function BookingWidget() {
                     placeholder="e.g. Return to Hotel or Vienna Airport (VIE)"
                     value={dropoffLocation}
                     onChange={(e) => setDropoffLocation(e.target.value)}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-gold"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:bg-white focus:border-gold-500"
                   />
                 </div>
               </div>
@@ -423,16 +422,16 @@ export default function BookingWidget() {
 
             {/* Dynamic Fields for Tab 3: Day Trip */}
             {activeTab === 'daytrip' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/10">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-gray-100">
                 <div className="md:col-span-2 space-y-1.5">
-                  <label className="text-xs font-semibold text-gold uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
+                  <label className="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-gold-600" />
                     <span>Select Signature Day Trip Route</span>
                   </label>
                   <select
                     value={dayTripRoute}
                     onChange={(e) => setDayTripRoute(e.target.value)}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                   >
                     {DAY_TRIP_ROUTES_LIST.map((route) => (
                       <option key={route} value={route}>
@@ -445,14 +444,14 @@ export default function BookingWidget() {
             )}
 
             {/* Next Step Button */}
-            <div className="pt-4 flex items-center justify-between border-t border-white/10">
-              <div className="text-xs text-gray-400 flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5 text-gold" />
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-gray-100">
+              <div className="text-xs text-gray-500 flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Zero obligation • Instant transparent chauffeur quote</span>
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-300 text-luxury-black font-bold text-xs uppercase tracking-wider px-8 py-3 rounded-lg shadow-lg hover:shadow-gold/20 transition-all transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-600 hover:to-gold-500 text-luxury-dark font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-lg shadow-md hover:shadow-gold/30 transition-all transform hover:-translate-y-0.5 border border-gold-400/50"
               >
                 <span>Continue to Vehicle</span>
                 <ArrowRight className="w-4 h-4" />
@@ -463,10 +462,10 @@ export default function BookingWidget() {
           /* Step 2: Vehicle Selection */
           <div className="space-y-6 animate-fade-in">
             <div>
-              <h3 className="font-serif text-lg font-bold text-white mb-1">
+              <h3 className="font-serif text-lg font-bold text-gray-900 mb-1">
                 Choose Your Preferred Vehicle
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500">
                 All vehicles feature complimentary bottled Austrian spring water, Wi-Fi, and certified professional chauffeurs.
               </p>
             </div>
@@ -480,18 +479,18 @@ export default function BookingWidget() {
                     onClick={() => setSelectedVehicle(vehicle.id)}
                     className={`cursor-pointer rounded-xl border p-4 transition-all relative flex flex-col justify-between ${
                       isSelected
-                        ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                        : 'border-white/10 bg-black/40 hover:border-gold/50 hover:bg-black/60'
+                        ? 'border-gold-500 bg-gold-50/60 shadow-lg shadow-gold/15 ring-2 ring-gold-500'
+                        : 'border-gray-200 bg-white hover:border-gold-400 hover:shadow-md'
                     }`}
                   >
                     {isSelected && (
-                      <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-gold text-luxury-dark flex items-center justify-center">
+                      <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-gold-500 text-luxury-dark flex items-center justify-center shadow-sm">
                         <Check className="w-3.5 h-3.5 stroke-[3]" />
                       </div>
                     )}
 
                     <div className="space-y-3">
-                      <div className="relative w-full h-28 rounded-lg overflow-hidden bg-black/50 border border-white/5">
+                      <div className="relative w-full h-28 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
                         <Image
                           src={vehicle.image}
                           alt={vehicle.name}
@@ -501,27 +500,27 @@ export default function BookingWidget() {
                       </div>
 
                       <div>
-                        <span className="text-[10px] uppercase tracking-wider text-gold font-semibold">
+                        <span className="text-[10px] uppercase tracking-wider text-gold-700 font-bold">
                           {vehicle.category}
                         </span>
-                        <h4 className="font-serif text-sm font-bold text-white mt-0.5">
+                        <h4 className="font-serif text-sm font-bold text-gray-900 mt-0.5">
                           {vehicle.name}
                         </h4>
                       </div>
 
-                      <div className="flex items-center gap-4 text-xs text-gray-400">
+                      <div className="flex items-center gap-4 text-xs text-gray-600">
                         <div className="flex items-center gap-1">
-                          <Users className="w-3.5 h-3.5 text-gold" />
+                          <Users className="w-3.5 h-3.5 text-gold-600" />
                           <span>Max {vehicle.passengers}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Briefcase className="w-3.5 h-3.5 text-gold" />
+                          <Briefcase className="w-3.5 h-3.5 text-gold-600" />
                           <span>Max {vehicle.luggage}</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="pt-3 mt-3 border-t border-white/5 text-[11px] text-gray-400">
+                    <div className="pt-3 mt-3 border-t border-gray-100 text-[11px] text-gray-500">
                       {vehicle.recommendedFor}
                     </div>
                   </div>
@@ -529,18 +528,18 @@ export default function BookingWidget() {
               })}
             </div>
 
-            <div className="pt-4 flex items-center justify-between border-t border-white/10">
+            <div className="pt-4 flex items-center justify-between border-t border-gray-100">
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="text-xs text-gray-400 hover:text-white px-4 py-2"
+                className="text-xs text-gray-600 hover:text-gray-900 px-4 py-2"
               >
                 ← Back to Route
               </button>
               <button
                 type="button"
                 onClick={handleStep2Submit}
-                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-400 text-luxury-black font-bold text-xs uppercase tracking-wider px-8 py-3 rounded-lg shadow transition-all"
+                className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-luxury-dark font-bold text-xs uppercase tracking-wider px-8 py-3 rounded-lg shadow-md transition-all"
               >
                 <span>Proceed to Quote Details</span>
                 <ArrowRight className="w-4 h-4" />
@@ -552,116 +551,116 @@ export default function BookingWidget() {
           <form onSubmit={handleSubmitFinal} className="space-y-6 animate-fade-in">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Trip Summary Card */}
-              <div className="bg-black/60 border border-gold/30 rounded-xl p-5 space-y-3">
-                <h4 className="font-serif text-sm font-semibold tracking-wider text-gold uppercase border-b border-white/10 pb-2">
+              <div className="bg-[#faf9f6] border border-gray-200 rounded-xl p-5 space-y-3 shadow-sm">
+                <h4 className="font-serif text-sm font-bold tracking-wider text-gold-800 uppercase border-b border-gray-200 pb-2">
                   Trip Summary
                 </h4>
-                <div className="text-xs space-y-2 text-gray-300">
+                <div className="text-xs space-y-2 text-gray-700">
                   <div>
-                    <span className="text-gray-400">Service:</span>
-                    <p className="font-medium text-white capitalize">{activeTab} Booking</p>
+                    <span className="text-gray-500">Service:</span>
+                    <p className="font-semibold text-gray-900 capitalize">{activeTab} Booking</p>
                   </div>
                   <div>
-                    <span className="text-gray-400">Date & Time:</span>
-                    <p className="font-medium text-white">{pickupDate} at {pickupTime}</p>
+                    <span className="text-gray-500">Date & Time:</span>
+                    <p className="font-semibold text-gray-900">{pickupDate} at {pickupTime}</p>
                   </div>
                   <div>
-                    <span className="text-gray-400">Pickup:</span>
-                    <p className="font-medium text-white">{pickupLocation}</p>
+                    <span className="text-gray-500">Pickup:</span>
+                    <p className="font-semibold text-gray-900">{pickupLocation}</p>
                   </div>
                   {dropoffLocation && (
                     <div>
-                      <span className="text-gray-400">Destination:</span>
-                      <p className="font-medium text-white">{dropoffLocation}</p>
+                      <span className="text-gray-500">Destination:</span>
+                      <p className="font-semibold text-gray-900">{dropoffLocation}</p>
                     </div>
                   )}
                   {activeTab === 'daytrip' && (
                     <div>
-                      <span className="text-gray-400">Route:</span>
-                      <p className="font-medium text-gold">{dayTripRoute}</p>
+                      <span className="text-gray-500">Route:</span>
+                      <p className="font-bold text-gold-800">{dayTripRoute}</p>
                     </div>
                   )}
                   <div>
-                    <span className="text-gray-400">Vehicle:</span>
-                    <p className="font-medium text-white">{currentVehicleObj?.name}</p>
+                    <span className="text-gray-500">Vehicle:</span>
+                    <p className="font-semibold text-gray-900">{currentVehicleObj?.name}</p>
                   </div>
                 </div>
               </div>
 
               {/* Contact Inputs */}
               <div className="md:col-span-2 space-y-4">
-                <h4 className="font-serif text-sm font-semibold tracking-wider text-gold uppercase">
+                <h4 className="font-serif text-sm font-bold tracking-wider text-gray-900 uppercase">
                   Passenger & Contact Details
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs text-gray-300">Full Name *</label>
+                    <label className="text-xs font-semibold text-gray-700">Full Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Alexander Schmidt"
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                      className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs text-gray-300">Email Address *</label>
+                    <label className="text-xs font-semibold text-gray-700">Email Address *</label>
                     <input
                       type="email"
                       required
                       placeholder="e.g. alex@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                      className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs text-gray-300">Mobile Phone / WhatsApp *</label>
+                    <label className="text-xs font-semibold text-gray-700">Mobile Phone / WhatsApp *</label>
                     <input
                       type="tel"
                       required
                       placeholder="e.g. +43 664 1234567"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                      className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                     />
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs text-gray-300">Flight No. (Airport Transfers)</label>
+                    <label className="text-xs font-semibold text-gray-700">Flight No. (Airport Transfers)</label>
                     <input
                       type="text"
                       placeholder="e.g. OS 501 (for flight tracking)"
                       value={flightNumber}
                       onChange={(e) => setFlightNumber(e.target.value)}
-                      className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-gold"
+                      className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2.5 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs text-gray-300">Special Notes / Child Seats / Requests</label>
+                  <label className="text-xs font-semibold text-gray-700">Special Notes / Child Seats / Requests</label>
                   <textarea
                     rows={2}
                     placeholder="e.g. Need 1 baby seat, 4 large suitcases, or specific arrival instructions"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="w-full bg-black/60 border border-white/20 rounded-lg px-3.5 py-2 text-sm text-white focus:outline-none focus:border-gold"
+                    className="w-full bg-[#faf9f6] border border-gray-300 rounded-lg px-3.5 py-2 text-sm text-gray-900 focus:bg-white focus:border-gold-500"
                   />
                 </div>
               </div>
             </div>
 
             {/* Final Actions */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100">
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="text-xs text-gray-400 hover:text-white"
+                className="text-xs text-gray-600 hover:text-gray-900"
               >
                 ← Back to Vehicle Selection
               </button>
@@ -671,7 +670,7 @@ export default function BookingWidget() {
                   href={`https://wa.me/436642035445?text=${generateWhatsAppMessage()}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-5 py-3 rounded-lg transition-colors"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-3 rounded-lg shadow-sm transition-colors"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>Send via WhatsApp</span>
@@ -679,7 +678,7 @@ export default function BookingWidget() {
 
                 <button
                   type="submit"
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-400 hover:to-gold-300 text-luxury-black font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-lg shadow transition-all"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 bg-gradient-to-r from-gold-500 to-gold-400 hover:from-gold-600 hover:to-gold-500 text-luxury-dark font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-lg shadow-md transition-all"
                 >
                   <Send className="w-4 h-4" />
                   <span>Submit Quote Request</span>
@@ -690,5 +689,6 @@ export default function BookingWidget() {
         )}
       </div>
     </div>
-  );
+  </div>
+);
 }

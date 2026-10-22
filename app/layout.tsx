@@ -4,7 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { COMPANY_INFO } from '@/lib/content';
 import { generateOrganizationJsonLd } from '@/lib/seo';
-import { MessageSquare, Phone } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: `${COMPANY_INFO.name} | ${COMPANY_INFO.tagline}`,
@@ -47,7 +47,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-luxury-black text-gray-100 min-h-screen flex flex-col antialiased selection:bg-gold selection:text-black">
+      <body className="bg-white text-gray-900 min-h-screen flex flex-col antialiased selection:bg-gold-200 selection:text-gold-900">
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
@@ -58,7 +58,7 @@ export default function RootLayout({
             href={COMPANY_INFO.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-13 h-13 p-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 border border-emerald-400/40 group"
+            className="w-13 h-13 p-3.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 border border-emerald-400/40 group shadow-emerald-900/20"
             title="Chat on WhatsApp"
             aria-label="Chat on WhatsApp"
           >

@@ -1,23 +1,89 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, ShieldCheck, Clock, Award, Star } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Clock, Star, ArrowUp } from 'lucide-react';
 import { COMPANY_INFO, FOOTER_LINKS } from '@/lib/content';
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="bg-luxury-black text-gray-300 border-t border-gold/30 pt-16 pb-8 relative overflow-hidden">
-      {/* Background Subtle Luxury Watermark */}
-      <div className="absolute right-0 bottom-0 opacity-5 pointer-events-none select-none">
-        <span className="font-serif text-[180px] font-bold text-gold">VIENNA</span>
+    <footer className="w-full bg-[#FAF6F0] text-gray-800 border-t border-[#e2d5c3]">
+      {/* 1. TOP HIGHLIGHTS BAR - Warm Sand #F5EDE0 */}
+      <div className="bg-[#F5EDE0] py-8 border-b border-[#e2d5c3]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+            {/* Address */}
+            <div className="flex items-center justify-center md:justify-start gap-4 p-3 bg-white/60 rounded-xl border border-[#e2d5c3]/60 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#c9b18c]/20 text-[#8e723e] flex items-center justify-center shrink-0">
+                <MapPin className="w-5 h-5 text-[#8e723e]" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-gray-500 block">
+                  Office Address
+                </span>
+                <a
+                  href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.full)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs sm:text-sm font-semibold text-gray-900 hover:text-gold-800 transition-colors"
+                >
+                  {COMPANY_INFO.address.full}
+                </a>
+              </div>
+            </div>
+
+            {/* Phones */}
+            <div className="flex items-center justify-center md:justify-start gap-4 p-3 bg-white/60 rounded-xl border border-[#e2d5c3]/60 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#c9b18c]/20 text-[#8e723e] flex items-center justify-center shrink-0">
+                <Phone className="w-5 h-5 text-[#8e723e]" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-gray-500 block">
+                  24/7 Phone &amp; WhatsApp
+                </span>
+                <a
+                  href={COMPANY_INFO.phoneHref}
+                  className="text-xs sm:text-sm font-semibold text-gray-900 hover:text-gold-800 transition-colors"
+                >
+                  {COMPANY_INFO.phoneFormatted}
+                </a>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-center justify-center md:justify-start gap-4 p-3 bg-white/60 rounded-xl border border-[#e2d5c3]/60 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#c9b18c]/20 text-[#8e723e] flex items-center justify-center shrink-0">
+                <Mail className="w-5 h-5 text-[#8e723e]" />
+              </div>
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-gray-500 block">
+                  Email Inquiries
+                </span>
+                <a
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  className="text-xs sm:text-sm font-semibold text-gray-900 hover:text-gold-800 transition-colors"
+                >
+                  {COMPANY_INFO.email}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-          {/* Column 1: Brand & Contact Info */}
-          <div className="lg:col-span-2 space-y-4">
+      {/* 2. MAIN FOOTER CONTENT - Warm Soft Cream */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          
+          {/* Column 1: About Vienna Day Trip */}
+          <div className="space-y-4">
             <Link href="/" className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full border border-gold/40 overflow-hidden bg-black flex items-center justify-center p-1">
+              <div className="relative w-10 h-10 rounded-full border border-gold-400 overflow-hidden bg-black flex items-center justify-center p-1 shadow-sm">
                 <Image
                   src="/images/branding/cropped-logo-BmhMpHJz-270x270.png"
                   alt="Vienna Day Trip Logo"
@@ -26,57 +92,34 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <span className="font-serif text-xl font-bold tracking-widest text-white">
+              <span className="font-serif text-lg font-bold tracking-widest text-gray-900">
                 VIENNA DAY TRIP
               </span>
             </Link>
 
-            <p className="text-gray-400 text-xs leading-relaxed max-w-sm">
-              Vienna’s premier licensed private chauffeur and day-trip company. Experience bespoke transfers, hourly executive hire, and luxury day tours across Austria and Central Europe.
+            <p className="text-gray-600 text-xs leading-relaxed">
+              At Vienna Day Trip, we provide premium private chauffeur services based in Vienna. Working with embassies, top hotels, corporate clients and international travelers, we are known for punctuality, discretion and first-class Mercedes-Benz vehicles.
             </p>
 
-            {/* Google Rating Badge */}
-            <div className="inline-flex items-center gap-3 bg-white/5 border border-gold/30 rounded-lg p-3">
-              <div className="flex flex-col">
-                <div className="flex items-center gap-1 text-yellow-400 text-sm">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                  <span className="font-bold text-white ml-1 text-xs">5.0 / 5.0</span>
-                </div>
-                <span className="text-[11px] text-gray-400 mt-0.5">Verified Google Reviews</span>
-              </div>
-            </div>
-
-            <div className="space-y-2 text-xs pt-2">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                <span>{COMPANY_INFO.address.full}</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-gold shrink-0" />
-                <a href={COMPANY_INFO.phoneHref} className="hover:text-gold transition-colors font-medium">
-                  {COMPANY_INFO.phoneFormatted}
-                </a>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-gold shrink-0" />
-                <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-gold transition-colors">
-                  {COMPANY_INFO.email}
-                </a>
-              </div>
+            <div className="pt-2">
+              <span className="text-[11px] text-gray-500 block uppercase tracking-wider font-semibold">
+                Official WKO Member
+              </span>
+              <p className="text-xs text-gray-700 font-medium">
+                Austrian Economic Chamber Registered Chauffeur Service
+              </p>
             </div>
           </div>
 
           {/* Column 2: Chauffeur Services */}
           <div>
-            <h4 className="font-serif text-sm font-semibold tracking-wider text-gold uppercase mb-4">
+            <h4 className="font-serif text-xs font-bold tracking-widest text-gray-900 uppercase mb-4 border-b border-[#e2d5c3] pb-2">
               Chauffeur Services
             </h4>
             <ul className="space-y-2 text-xs">
               {FOOTER_LINKS.services.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-gray-400 hover:text-gold transition-colors block py-0.5">
+                  <Link href={item.href} className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
                     {item.name}
                   </Link>
                 </li>
@@ -84,15 +127,15 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Day Trips from Vienna */}
+          {/* Column 3: Day Trips */}
           <div>
-            <h4 className="font-serif text-sm font-semibold tracking-wider text-gold uppercase mb-4">
-              Day Trips
+            <h4 className="font-serif text-xs font-bold tracking-widest text-gray-900 uppercase mb-4 border-b border-[#e2d5c3] pb-2">
+              Day Trips from Vienna
             </h4>
             <ul className="space-y-2 text-xs">
               {FOOTER_LINKS.destinations.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-gray-400 hover:text-gold transition-colors block py-0.5">
+                  <Link href={item.href} className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
                     {item.name}
                   </Link>
                 </li>
@@ -100,58 +143,70 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Trust & Legal */}
+          {/* Column 4: Quick Links & Legal */}
           <div>
-            <h4 className="font-serif text-sm font-semibold tracking-wider text-gold uppercase mb-4">
-              Information & Legal
+            <h4 className="font-serif text-xs font-bold tracking-widest text-gray-900 uppercase mb-4 border-b border-[#e2d5c3] pb-2">
+              Quick Links &amp; Legal
             </h4>
             <ul className="space-y-2 text-xs">
               {FOOTER_LINKS.legal.map((item) => (
                 <li key={item.name}>
-                  <Link href={item.href} className="text-gray-400 hover:text-gold transition-colors block py-0.5">
+                  <Link href={item.href} className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
                     {item.name}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/b2b-solutions" className="text-gray-400 hover:text-gold transition-colors block py-0.5">
-                  B2B & Travel Agents
+                <Link href="/our-fleet" className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
+                  Our Luxury Fleet
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-gold transition-colors block py-0.5">
-                  Travel Blog & Guides
+                <Link href="/tour-pricing" className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
+                  Fixed Pricing Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/b2b-solutions" className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
+                  B2B &amp; Travel Agents
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-gray-600 hover:text-gold-800 transition-colors block py-0.5">
+                  Austria Travel Blog
                 </Link>
               </li>
             </ul>
-
-            <div className="mt-6 pt-4 border-t border-white/5 space-y-2 text-[11px] text-gray-400">
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-gold" />
-                <span>Licensed Austrian Chauffeurs</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-gold" />
-                <span>24/7 Operations & Dispatch</span>
-              </div>
-            </div>
           </div>
-        </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+        </div>
+      </div>
+
+      {/* 3. BOTTOM COPYRIGHT BAR - Dark Bronze */}
+      <div className="bg-[#1c1613] text-gray-400 py-5 text-xs border-t border-[#30221d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} Vienna Day Trip. All rights reserved.</p>
+          
           <div className="flex items-center gap-6">
-            <Link href="/privacy-policy" className="hover:text-gold transition-colors">
+            <Link href="/privacy-policy" className="hover:text-gold-400 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/cancellation-refund-policy" className="hover:text-gold transition-colors">
+            <Link href="/cancellation-refund-policy" className="hover:text-gold-400 transition-colors">
               Cancellation Policy
             </Link>
-            <Link href="/imprint" className="hover:text-gold transition-colors">
+            <Link href="/imprint" className="hover:text-gold-400 transition-colors">
               Imprint
             </Link>
           </div>
+
+          <button
+            type="button"
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-gold-500 hover:text-black flex items-center justify-center transition-colors"
+          >
+            <ArrowUp className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </footer>

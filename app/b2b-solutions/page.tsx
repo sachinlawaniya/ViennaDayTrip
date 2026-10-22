@@ -1,6 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
-import { Building2, Briefcase, Globe, Hotel, ShieldCheck, Check, ArrowRight, Phone, Mail } from 'lucide-react';
+import { Building2, Briefcase, Globe, Hotel, Check, Phone, Mail } from 'lucide-react';
 import { COMPANY_INFO } from '@/lib/content';
 import { constructMetadata } from '@/lib/seo';
 import FAQSection from '@/components/sections/FAQSection';
@@ -61,17 +60,17 @@ const B2B_FAQS = [
 
 export default function B2BSolutionsPage() {
   return (
-    <div className="pt-24 bg-luxury-black text-gray-200">
+    <div className="pt-24 bg-[#faf9f6] text-gray-800">
       {/* Hero */}
-      <section className="py-20 bg-gradient-to-b from-black to-luxury-dark text-center border-b border-gold/20">
+      <section className="py-20 bg-gradient-to-b from-white to-[#faf9f6] text-center border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <span className="text-xs uppercase tracking-widest text-gold font-semibold">
+          <span className="text-xs uppercase tracking-widest text-gold-700 font-bold">
             Corporate & Agency Partnerships
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold text-white tracking-wide">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold text-gray-900 tracking-wide">
             Partners & B2B Solutions
           </h1>
-          <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
             Looking for a dependable chauffeur partner in Vienna for your valued guests, executives, or travel clients? We deliver uncompromising service excellence.
           </p>
         </div>
@@ -80,10 +79,10 @@ export default function B2BSolutionsPage() {
       {/* Who We Work With */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
-          <span className="text-xs uppercase tracking-widest text-gold font-semibold">
+          <span className="text-xs uppercase tracking-widest text-gold-700 font-bold">
             Partnership Ecosystem
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-gray-900">
             Who We Work With
           </h2>
         </div>
@@ -94,15 +93,15 @@ export default function B2BSolutionsPage() {
             return (
               <div
                 key={i}
-                className="bg-luxury-dark border border-gold/25 hover:border-gold/70 rounded-2xl p-6 transition-all space-y-4 group"
+                className="bg-white border border-gray-200/90 hover:border-gold-400 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl space-y-4 group shadow-sm"
               >
-                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700 group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-white group-hover:text-gold transition-colors">
+                <h3 className="font-serif text-lg font-bold text-gray-900 group-hover:text-gold-800 transition-colors">
                   {p.title}
                 </h3>
-                <p className="text-xs text-gray-400 leading-relaxed">
+                <p className="text-xs text-gray-600 leading-relaxed">
                   {p.description}
                 </p>
               </div>
@@ -112,13 +111,13 @@ export default function B2BSolutionsPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-black/60 border-t border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="py-20 bg-white border-t border-gray-200/80">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-2">
-            <span className="text-xs uppercase tracking-widest text-gold font-semibold">
+            <span className="text-xs uppercase tracking-widest text-gold-700 font-bold">
               The Partner Advantage
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-gray-900">
               Why Partner With Vienna Day Trip
             </h2>
           </div>
@@ -127,12 +126,12 @@ export default function B2BSolutionsPage() {
             {B2B_BENEFITS.map((benefit, i) => (
               <div
                 key={i}
-                className="bg-luxury-dark border border-white/10 rounded-xl p-5 flex items-start gap-3"
+                className="bg-[#faf9f6] border border-gray-200/90 rounded-xl p-5 flex items-start gap-3 shadow-sm"
               >
-                <div className="w-6 h-6 rounded-full bg-gold/20 flex items-center justify-center text-gold shrink-0 mt-0.5">
+                <div className="w-6 h-6 rounded-full bg-gold-100 flex items-center justify-center text-gold-800 shrink-0 mt-0.5 font-bold">
                   <Check className="w-4 h-4" />
                 </div>
-                <span className="text-xs text-gray-300 leading-relaxed font-medium">
+                <span className="text-xs text-gray-800 leading-relaxed font-semibold">
                   {benefit}
                 </span>
               </div>
@@ -140,26 +139,26 @@ export default function B2BSolutionsPage() {
           </div>
 
           {/* Quick Partner Inquiry Box */}
-          <div className="bg-gradient-to-r from-luxury-dark via-black to-luxury-dark border border-gold/40 rounded-2xl p-8 text-center space-y-6">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-white">
+          <div className="bg-[#faf9f6] border border-gray-300 rounded-3xl p-8 sm:p-10 text-center space-y-6 shadow-md">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-gray-900">
               Become a Corporate or Travel Partner
             </h3>
-            <p className="text-xs text-gray-400 max-w-lg mx-auto">
-              Send us your business details or reach out directly to set up your corporate account.
+            <p className="text-xs sm:text-sm text-gray-600 max-w-lg mx-auto">
+              Send us your business details or reach out directly to set up your corporate account with priority rates.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <a
                 href={`mailto:${COMPANY_INFO.email}?subject=B2B%20Partnership%20Inquiry%20-%20Vienna%20Day%20Trip`}
-                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-400 text-luxury-black font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-lg shadow transition-all"
+                className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-luxury-dark font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-md transition-all"
               >
                 <Mail className="w-4 h-4" />
                 <span>Email B2B Team</span>
               </a>
               <a
                 href={COMPANY_INFO.phoneHref}
-                className="inline-flex items-center gap-2 border border-white/20 hover:border-gold text-white text-xs font-semibold px-6 py-3 rounded-lg transition-colors"
+                className="inline-flex items-center gap-2 border border-gray-300 hover:border-gold-500 bg-white text-gray-900 text-xs font-bold px-6 py-3.5 rounded-lg transition-colors shadow-sm"
               >
-                <Phone className="w-4 h-4 text-gold" />
+                <Phone className="w-4 h-4 text-gold-600" />
                 <span>Call {COMPANY_INFO.phoneFormatted}</span>
               </a>
             </div>

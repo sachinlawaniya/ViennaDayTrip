@@ -53,16 +53,16 @@ export default function FAQSection({
   };
 
   return (
-    <section className="py-20 bg-luxury-black border-t border-white/5">
+    <section className="py-24 bg-[#faf9f6] border-t border-gray-200/60">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 space-y-3">
-          <span className="text-xs uppercase tracking-widest text-gold font-semibold">
+        <div className="text-center mb-14 space-y-3">
+          <span className="text-xs uppercase tracking-widest text-gold-700 font-bold">
             Got Questions?
           </span>
-          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white tracking-wide">
+          <h2 className="font-serif text-2xl sm:text-4xl font-bold text-gray-900 tracking-wide">
             {title}
           </h2>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-600 text-sm">
             {subtitle}
           </p>
         </div>
@@ -73,25 +73,25 @@ export default function FAQSection({
             return (
               <div
                 key={idx}
-                className="bg-white/5 border border-gold/20 rounded-xl overflow-hidden transition-all"
+                className="bg-white border border-gray-200/90 rounded-xl overflow-hidden shadow-sm hover:border-gold-400 transition-all"
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full text-left p-5 flex items-center justify-between gap-4 text-white hover:text-gold transition-colors focus:outline-none"
+                  className="w-full text-left p-5 flex items-center justify-between gap-4 text-gray-900 hover:text-gold-800 transition-colors focus:outline-none"
                 >
-                  <span className="font-serif text-sm sm:text-base font-semibold">
+                  <span className="font-serif text-sm sm:text-base font-bold">
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-gold shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180' : ''
+                    className={`w-5 h-5 text-gold-600 shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-gold-700' : ''
                     }`}
                   />
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-300 leading-relaxed border-t border-white/5 animate-fade-in">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 animate-fade-in bg-white">
                     {faq.answer}
                   </div>
                 )}
