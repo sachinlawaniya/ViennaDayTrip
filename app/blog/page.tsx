@@ -114,7 +114,7 @@ export default function BlogListingPage() {
                   {/* Image */}
                   <div className="relative w-full h-52 bg-black/60 overflow-hidden">
                     <Image
-                      src={post.featuredImage || '/images/destinations/Hallstatt-Day-Trip-From-Vienna.jpeg'}
+                      src={post.featuredImage || '/images/destinations/hallstatt-day-trip-2.webp'}
                       alt={post.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"

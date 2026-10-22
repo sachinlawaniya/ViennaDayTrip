@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return constructMetadata({
     title: `${post.title} | Travel Guide`,
     description: post.excerpt,
-    image: post.featuredImage || '/images/destinations/Hallstatt-Day-Trip-From-Vienna.jpeg',
+    image: post.featuredImage || '/images/destinations/hallstatt-day-trip-2.webp',
     canonicalUrl: `/blog/${post.slug}`,
   });
 }

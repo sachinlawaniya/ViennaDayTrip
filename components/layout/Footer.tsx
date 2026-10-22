@@ -85,7 +85,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <div className="relative w-10 h-10 rounded-full border border-gold-400 overflow-hidden bg-black flex items-center justify-center p-1 shadow-sm">
                 <Image
-                  src="/images/branding/cropped-logo-BmhMpHJz-270x270.png"
+                  src="/images/branding/cropped-logo-BmhMpHJz.png"
                   alt="Vienna Day Trip Logo"
                   width={40}
                   height={40}

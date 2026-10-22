@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   description: `${COMPANY_INFO.subtagline}. Premium Mercedes-Benz fleet, professional licensed chauffeurs, airport meet & greet, and day trips to Hallstatt, Wachau, Salzburg, Budapest, Prague, and Bratislava.`,
   metadataBase: new URL('https://viennadaytrip.com'),
   icons: {
-    icon: '/images/branding/cropped-logo-BmhMpHJz-32x32.png',
-    apple: '/images/branding/cropped-logo-BmhMpHJz-180x180.png',
+    icon: '/images/branding/cropped-logo-BmhMpHJz.png',
+    apple: '/images/branding/cropped-logo-BmhMpHJz.png',
   },
   openGraph: {
     title: `${COMPANY_INFO.name} | ${COMPANY_INFO.tagline}`,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: COMPANY_INFO.name,
     images: [
       {
-        url: 'https://viennadaytrip.com/images/destinations/Hallstatt-Day-Trip-From-Vienna.jpeg',
+        url: 'https://viennadaytrip.com/images/destinations/hallstatt-day-trip-2.webp',
         width: 1200,
         height: 630,
         alt: 'Vienna Day Trip Private Chauffeur',

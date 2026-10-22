@@ -192,8 +192,8 @@ export const DAY_TRIPS: DayTrip[] = [
     duration: "10-12 Hours",
     distance: "290 km (approx. 3.5 hrs drive each way)",
     badge: "Most Popular",
-    heroImage: "/images/destinations/Hallstatt-Day-Trip-From-Vienna.jpeg",
-    cardImage: "/images/destinations/Hallstatt-Day-Trip-From-Vienna.jpeg",
+    heroImage: "/images/destinations/hallstatt-day-trip-2.webp",
+    cardImage: "/images/destinations/hallstatt-day-trip-2.webp",
     shortDescription: "A breathtaking full-day private journey through Austria's Salzkammergut lake district to the UNESCO World Heritage alpine village of Hallstatt.",
     description: "Escape the city for a scenic journey into the heart of the Austrian Alps. Travel in pure luxury through picturesque countryside, turquoise alpine lakes, and dramatic mountain peaks before reaching Hallstatt. Explore the 7,000-year-old salt mine, the famous Beinhaus (Bone House), walk along the scenic lake promenade, or ascend to the World Heritage Skywalk overlooking the fjord-like Lake Hallstatt.",
     highlights: [
@@ -268,8 +268,8 @@ export const DAY_TRIPS: DayTrip[] = [
     duration: "8-9 Hours",
     distance: "85 km (approx. 1 hr drive each way)",
     badge: "Wine & Culture",
-    heroImage: "/images/destinations/Wachau-Valley-Trip.jpeg",
-    cardImage: "/images/destinations/Wachau-Valley-Trip.jpeg",
+    heroImage: "/images/destinations/Wachau-Valley-from-Vienna-Day-Trip.webp",
+    cardImage: "/images/destinations/Wachau-Valley-from-Vienna-Day-Trip.webp",
     shortDescription: "Discover Austria's premier UNESCO wine region, famed for Grüner Veltliner, apricot orchards, medieval Dürnstein, and the stunning Melk Abbey.",
     description: "The Wachau Valley is one of Europe's most enchanting river landscapes. Just an hour from Vienna, the Danube winds through steep vineyard terraces, centuries-old villages, and hilltop ruins where King Richard the Lionheart was once imprisoned. Visit the majestic Benedictine Melk Abbey, stroll charming cobblestone streets in Dürnstein, and enjoy world-class wine tastings at authentic local vintners.",
     highlights: [
@@ -505,8 +505,8 @@ export const DAY_TRIPS: DayTrip[] = [
     duration: "5-6 Hours",
     distance: "80 km (approx. 1 hr drive each way)",
     badge: "Quick Getaway",
-    heroImage: "/images/destinations/Bratislava-Day-Trip.jpeg",
-    cardImage: "/images/destinations/Bratislava-Day-Trip.jpeg",
+    heroImage: "/images/destinations/Bratislava-Castle.jpg",
+    cardImage: "/images/destinations/Bratislava-Castle.jpg",
     shortDescription: "A relaxed half-day or full-day trip to Slovakia's capital. Explore Bratislava Castle, the UFO bridge, and the pedestrianized medieval Old Town.",
     description: "Vienna and Bratislava are the two closest capital cities in Europe, situated only 80 km apart. In just one hour of comfortable driving, arrive in Slovakia's charming capital. Stroll the compact cobblestone Old Town with its whimsical bronze statues, visit the hilltop white Bratislava Castle overlooking the Danube and three nations, and discover the art-nouveau Blue Church.",
     highlights: [
@@ -598,8 +598,8 @@ export const DAY_TRIPS: DayTrip[] = [
     duration: "Custom (Flexible)",
     distance: "Tailored to your itinerary",
     badge: "Bespoke",
-    heroImage: "/images/destinations/Best-Day-Trips-from-Vienna-by-Private-Car-2026.webp",
-    cardImage: "/images/destinations/Best-Day-Trips-from-Vienna-by-Private-Car-2026.webp",
+    heroImage: "/images/destinations/Best-Day-Trips-from-Vienna-by-Private-Chauffeur.webp",
+    cardImage: "/images/destinations/Best-Day-Trips-from-Vienna-by-Private-Chauffeur.webp",
     shortDescription: "Your travel, your schedule. Combine multiple destinations, wine tastings, castle tours, and shopping excursions with your private chauffeur.",
     description: "Not every traveler wants a fixed schedule. Our customized day trips allow you to combine destinations, choose your departure times, and linger wherever you like. Whether you want to visit family castles, explore the Neusiedler See wine region, tour Lake Bled in Slovenia, or combine Bratislava and Budapest in one executive itinerary, we tailor every detail.",
     highlights: [
